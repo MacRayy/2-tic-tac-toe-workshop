@@ -49,7 +49,7 @@ const renderBoard = (board, matrix) => {
   });
 };
 
-// renderBoard(board, matrix);
+renderBoard(board, matrix);
 
 //-- Main code: Setter
 
@@ -61,35 +61,39 @@ const setPlayer = () => {
   }
 };
 
-const setMatrix = (matrix, position) => {
+const setMatrix = (position, className) => {
   let x = position[0];
-  let y = position[1]
+  let y = position[1];
+  let cell = document.getElementsByClassName(className);
   if (player === 'X') {
     matrix[x].splice([y], 1, 'X');
+    cell[0].innerHTML = 'X';
   } else {
     matrix[x].splice([y], 1, 'O');
+    cell[0].innerHTML = 'O';
   }
-  renderBoard(board, matrix);
+  // renderBoard(board, matrix);
 };
 
 //Test your solution
-setMatrix(matrix, [0,1])
+// setMatrix(matrix, [0,1])
 
-const addMove = () => {
-  setMatrix(matrix, posotion);
+const addMove = (position, className) => {
+  setMatrix(position, className);
   setPlayer();
-}
+};
 
 //-- Main code: Event-listener
 
 //Hint: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 
 const getPositionFromClass = (nodeClass) => {
+  let className = nodeClass
   let currentPosition = [];
   currentPosition.push(parseInt(nodeClass.split('-')[1]));
   currentPosition.push(parseInt(nodeClass.split('-')[2]));
-  console.log(currentPosition)
-  return currentPosition;
+  console.log(currentPosition);
+  addMove(currentPosition, className);
 };
 
 const addEventListener = () => {
