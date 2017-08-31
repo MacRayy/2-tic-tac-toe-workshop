@@ -49,7 +49,7 @@ const renderBoard = (board, matrix) => {
   });
 };
 
-renderBoard(board, matrix);
+// renderBoard(board, matrix);
 
 //-- Main code: Setter
 
@@ -61,24 +61,45 @@ const setPlayer = () => {
   }
 };
 
-const setMatrix = (matrix, position, player) => {
-
+const setMatrix = (matrix, position) => {
+  let x = position[0];
+  let y = position[1]
+  if (player === 'X') {
+    matrix[x].splice([y], 1, 'X');
+  } else {
+    matrix[x].splice([y], 1, 'O');
+  }
+  renderBoard(board, matrix);
 };
 
 //Test your solution
-// setMatrix([0,1],'O')
+setMatrix(matrix, [0,1])
+
+const addMove = () => {
+  setMatrix(matrix, posotion);
+  setPlayer();
+}
 
 //-- Main code: Event-listener
 
 //Hint: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 
 const getPositionFromClass = (nodeClass) => {
-
+  let currentPosition = [];
+  currentPosition.push(parseInt(nodeClass.split('-')[1]));
+  currentPosition.push(parseInt(nodeClass.split('-')[2]));
+  console.log(currentPosition)
+  return currentPosition;
 };
 
 const addEventListener = () => {
-
+  board.addEventListener('click', (event) => {
+    let className = event.target.className;
+    getPositionFromClass(className);
+  });
 };
+
+addEventListener();
 
 //-- Main code: checker
 // possible sepration: isEmptyPlace isAnyEmptyPlace isLineWin isAnyRowWin transposeTable isAnyColumnWin getDiagonals isAnyDiagonalWin
