@@ -1,13 +1,14 @@
 'use strict';
+
 const board = document.querySelector(".board");
 
 let matrix = [
   ['', '', ''],
   ['', '', ''],
   ['', '', '']
-]
+];
 
-let player = 'x'
+let player = 'X';
 
 //Practice: Add, one cell to the board and set an X in it.
 //Hint: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
@@ -16,51 +17,53 @@ let player = 'x'
 //Hint: https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
 
 
-function addRowToBoard(board, rowClassName) {
-  const row = document.createElement("tr")
-  board.appendChild(row)
-  row.className = 'row' + rowClassName
-}
+const addRowToBoard = (board, rowClassName) => {
+  const row = document.createElement("tr");
+  board.appendChild(row);
+  row.className = 'row' + rowClassName;
+};
 
 
-function addCellToRow(row, cellClassName, cellValue) {
-  const cell = document.createElement("td")
-  row.appendChild(cell)
-  cell.className = cellClassName
-  cell.innerHTML = cellValue
-}
+const addCellToRow = (row, cellClassName, cellValue) => {
+  const cell = document.createElement("td");
+  row.appendChild(cell);
+  cell.className = cellClassName;
+  cell.innerHTML = cellValue;
+};
 
 
 //-- Main code: Loop through the matrix and draw it’s values
 
-function cellClassNameCreator(rowIndex, columnIndex){
-  return 'cell-' + rowIndex + '-' + columnIndex
-}
+const cellClassNameCreator = (rowIndex, columnIndex) => {
+  return 'cell-' + rowIndex + '-' + columnIndex;
+};
 
-function renderBoard(board, matrix) {
+const renderBoard = (board, matrix) => {
   matrix.forEach((row, rowIndex) => {
-    addRowToBoard(board, rowIndex)
-    const rowElement = document.querySelector('.row' + rowIndex)
+    addRowToBoard(board, rowIndex);
+    const rowElement = document.querySelector('.row' + rowIndex);
     row.forEach((item, itemIndex) => {
-      let className = cellClassNameCreator(rowIndex, itemIndex)
-      addCellToRow(rowElement, className, item)
-    })
-  })
-}
+      let className = cellClassNameCreator(rowIndex, itemIndex);
+      addCellToRow(rowElement, className, item);
+    });
+  });
+};
 
-renderBoard(board, matrix)
-
-
+renderBoard(board, matrix);
 
 //-- Main code: Setter
 
-function setPlayer(){
+const setPlayer = () => {
+  if (player === 'X') {
+    player = 'O';
+  } else {
+    player = 'X';
+  }
+};
 
-}
+const setMatrix = (matrix, position, player) => {
 
-function setMatrix(matrix, position, player){
-
-}
+};
 
 //Test your solution
 // setMatrix([0,1],'O')
@@ -69,26 +72,28 @@ function setMatrix(matrix, position, player){
 
 //Hint: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 
-function getPositionFromClass(nodeClass){}
+const getPositionFromClass = (nodeClass) => {
 
-function addEventListener(){
+};
 
-}
+const addEventListener = () => {
+
+};
 
 //-- Main code: checker
 // possible sepration: isEmptyPlace isAnyEmptyPlace isLineWin isAnyRowWin transposeTable isAnyColumnWin getDiagonals isAnyDiagonalWin
 // check high https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
-function isLineWin(matrix){
+const isLineWin = (matrix) => {
 
-}
+};
 
-function isWon(){
+const isWon = () => {
 
-}
+};
 
-function isGameOver(){
+const isGameOver = () => {
 
-}
+};
 
 //-- Main code: Game //Invite the functions.
 function actionOnEvent(nodeClass){}

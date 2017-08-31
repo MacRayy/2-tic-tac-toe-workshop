@@ -1,16 +1,16 @@
-.center {
-  display: flex;
+body {
   align-items: center;
+  display: flex;
   justify-content: center;
 }
 
 
 td {
-  padding: 0 0 0 45px;
+  border: 1px solid black;
   font-size: 4em;
+  padding: 0 0 0 45px;
   height: 100px;
   max-height: 100px;
-  width: 100px;
   max-width: 100px;
-  border: 1px solid black;
+  width: 100px;
 }
