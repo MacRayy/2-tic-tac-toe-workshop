@@ -79,8 +79,15 @@ const setMatrix = (position, className) => {
 // setMatrix(matrix, [0,1])
 
 const addMove = (position, className) => {
-  setMatrix(position, className);
-  setPlayer();
+  console.log(isEmptyPlace());
+  if (isEmptyPlace()) {
+    console.log('hey');
+    setMatrix(position, className);
+    setPlayer();
+  } else {
+    console.log('draw to an empty place');
+  }
+  console.log(matrix);
 };
 
 //-- Main code: Event-listener
@@ -92,7 +99,7 @@ const getPositionFromClass = (nodeClass) => {
   let currentPosition = [];
   currentPosition.push(parseInt(nodeClass.split('-')[1]));
   currentPosition.push(parseInt(nodeClass.split('-')[2]));
-  console.log(currentPosition);
+  // console.log(currentPosition);
   addMove(currentPosition, className);
 };
 
@@ -108,6 +115,22 @@ addEventListener();
 //-- Main code: checker
 // possible sepration: isEmptyPlace isAnyEmptyPlace isLineWin isAnyRowWin transposeTable isAnyColumnWin getDiagonals isAnyDiagonalWin
 // check high https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+const isEmptyPlace = () => {
+  let empty;
+  matrix.forEach((row) => {
+    row.forEach((cell) => {
+      if (cell === '') {
+        empty = true;
+        // console.log(empty);
+      } else {
+        empty = false;
+        // console.log(empty);
+      }
+    });
+  });
+  return empty;
+};
+
 const isLineWin = (matrix) => {
 
 };
